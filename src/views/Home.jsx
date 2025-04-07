@@ -3,7 +3,7 @@ import { useCatQueue } from '../hooks/useCatQueue';
 import CatImage from '../components/CatImage';
 import NextCatButton from '../components/NextCatButton';
 import LikeButton from '../components/LikeButton';
-import { saveFavorite } from '../storage/FavoritesStorage';
+import { saveFavorite } from '../storage/favoritesStorage';
 
 function Home() {
   const { catQueue, getNextCat, loading } = useCatQueue();
