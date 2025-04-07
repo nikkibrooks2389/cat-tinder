@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useCatQueue } from '../hooks/useCatQueue';
 import CatImage from '../components/CatImage';
 import NextCatButton from '../components/NextCatButton';
+import LikeButton from '../components/LikeButton';
+import { saveFavorite } from '../storage/FavoritesStorage';
 
 function Home() {
   const { catQueue, getNextCat, loading } = useCatQueue();
@@ -24,10 +26,17 @@ function Home() {
     return <p>Loading cat...</p>;
   }
 
+  const handleLike = () => {
+    saveFavorite(currentCat);
+    console.log('Liked cat:', currentCat);
+    // We'll connect this to storage in the next step!
+  };
+
   return (
     <div>
       <CatImage imageUrl={currentCat.url} />
       <NextCatButton onClick={handleNextCat} />
+      <LikeButton onClick={handleLike} />
     </div>
   );
 }
